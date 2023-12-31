@@ -48,14 +48,16 @@ export default {
     },
     methods: {
         ...mapActions(user_setup_store, {
-            store_message: 'store',
+            get_single_data: 'get',
+            store_data: 'store',
+            update_data: 'update',
         }),
 
         submitHandler: async function ($event) {
             if (this.param_id) {
-                this.user_update($event.target, this.param_id);
+                this.update_data($event.target, this.param_id);
             } else {
-                let response = await this.user_store($event.target);
+                let response = await this.store_data($event.target);
                 if (response.data.status === "success") {
                     window.s_alert("Data successfully created");
                     this.$router.push({ name: `AllUser` });

@@ -1,5 +1,9 @@
 // setup  files
 import './bootstrap';
+import "./plugins/axios_setup.js";
+import "./plugins/sweet_alert.js";
+import "./plugins/moment_setup";
+
 import { createApp } from 'vue';
 import { createRouter, createWebHashHistory } from 'vue-router';
 import { createPinia } from 'pinia'

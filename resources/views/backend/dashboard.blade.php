@@ -27,6 +27,9 @@
     <link href="{{asset('backend/assets/plugins/metismenu/css/metisMenu.min.css')}}" rel="stylesheet" />
     <!-- Custom Style-->
     <link href="{{asset('backend/assets/css/app-style.css')}}" rel="stylesheet" />
+     <!-- latest jquery-->
+     <script src="/plugins/sweet_alert.js" defer></script>
+     <script src="/backend/assets/js/jquery.min.js"></script>
     @vite(['resources/js/backend/app.js'])
 </head>
 

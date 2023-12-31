@@ -4,7 +4,7 @@
         <div class="brand-logo">
             <router-link :to="{ name: `adminDashboard` }" class="d-flex align-items-center">
                 <img src="/backend/assets/images/logo-icon.png" class="logo-icon" alt="logo icon">
-                <h5 class="logo-text">RECODING LAB</h5>
+                <h5 class="logo-text">Admin Panel</h5>
             </router-link>
             <div class="close-btn"><i class="zmdi zmdi-close"></i></div>
         </div>

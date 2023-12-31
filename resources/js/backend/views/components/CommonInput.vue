@@ -4,7 +4,7 @@
             {{ label || name }}
         </label>
         <div v-if="['text', 'number', 'password', 'email', 'date', 'month'].includes(type)" class="mt-1 mb-3">
-            <input class="form-control form-control-square" :type="type" :name="name" :id="name" :value="value"
+            <input class="form-control form-control-square mb-2" :type="type" :name="name" :id="name" :value="value"
                 @change="errorReset" />
         </div>
 
@@ -14,7 +14,7 @@
             <div :id="name"></div>
         </div>
 
-        
+
 
         <div v-if="type === 'select'" class="mt-1 mb-3">
             <select :name="name" class="form-control" :id="name" @change="errorReset">

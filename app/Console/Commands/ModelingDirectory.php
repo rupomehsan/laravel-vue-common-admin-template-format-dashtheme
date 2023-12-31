@@ -24,21 +24,19 @@ class ModelingDirectory extends Command
         $module_dir = null;
 
         if (count($format_dir) > 1) {
-
             $moduleName = end($format_dir);
-            // array_pop($format_dir); //if do not make last name folder
+            array_pop($format_dir); //if do not make last name folder
             $module_dir = implode('/', $format_dir);
             if (!File::isDirectory($baseDirectory . $module_dir)) {
                 mkdir($baseDirectory . $module_dir, 0777, true);
             }
-
             $baseDirectory = $baseDirectory . $module_dir;
         }
 
         $table = Str::plural((Str::snake($moduleName)));
 
         $actionsDirectory = $baseDirectory . '/Actions';
-        
+
         if (!File::isDirectory($baseDirectory)) {
             File::makeDirectory($baseDirectory);
         }
