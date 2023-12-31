@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 
-export const contact_message_store = defineStore('contact_message_store', {
+export const blog_category_setup_store = defineStore('blog_category_setup_store', {
     state: () => ({
 
     }),

@@ -5,7 +5,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
-                        <h5> {{ page_title }}</h5>
+                        <h5 class="text-capitalize"> {{ page_title }}</h5>
                         <div>
                             <router-link class="btn btn-outline-warning btn-sm"
                                 :to="{ name: `Create${route_prefix}` }">Create</router-link>
@@ -35,11 +35,11 @@
                                     <td style="width: 100px;">
                                         <div class="d-flex justify-content-between gap-2">
                                             <router-link class="btn btn-sm btn-outline-success "
-                                                :to="{ name: `BlogCategoryCreate` }">
+                                                :to="{ name: `CreateUser` }">
                                                 <i class="fa fa-eye"></i>
                                             </router-link>
                                             <router-link class="btn btn-sm btn-outline-warning mx-2"
-                                                :to="{ name: `BlogCategoryCreate` }">
+                                                :to="{ name: `CreateUser` }">
                                                 <i class="fa fa-pencil"></i>
                                             </router-link>
                                             <a @click.prevent="contact_delete(12)" class="btn btn-sm btn-outline-danger ">

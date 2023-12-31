@@ -12,12 +12,12 @@ const routes =
     children: [
         {
             path: '',
-            name: route_prefix + "All",
+            name:  "All" + route_prefix ,
             component: All,
         },
         {
             path: "create",
-            name: route_prefix + "Create",
+            name: "Create" +route_prefix,
             component: Form,
         },
 

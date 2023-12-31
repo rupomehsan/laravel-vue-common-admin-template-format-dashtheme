@@ -2,7 +2,7 @@
     <div>
         <div class="card">
             <div class="card-header d-flex justify-content-between">
-                <h5>Create new {{ route_prefix }}</h5>
+                <h5 class="text-capitalize">Create new {{ route_prefix }}</h5>
                 <div>
                     <router-link class="btn btn-outline-warning btn-sm" :to="{ name: `All${route_prefix}` }">All {{
                         route_prefix }}</router-link>

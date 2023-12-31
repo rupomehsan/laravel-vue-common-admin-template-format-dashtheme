@@ -178,7 +178,7 @@
                     <ul class="list-group list-group-flush">
                         <li class="list-group-item bg-transparent">
                             <div class="media align-items-center">
-                                <img src="assets/images/avatars/avatar-13.png" alt="user avatar"
+                                <img src="backend/assets/images/avatars/avatar-13.png" alt="user avatar"
                                     class="customer-img rounded-circle">
                                 <div class="media-body ml-3">
                                     <h6 class="mb-0">iPhone X <small class="ml-4">08.34 AM</small></h6>
@@ -191,7 +191,7 @@
                         </li>
                         <li class="list-group-item bg-transparent">
                             <div class="media align-items-center">
-                                <img src="assets/images/avatars/avatar-15.png" alt="user avatar"
+                                <img src="backend/assets/images/avatars/avatar-15.png" alt="user avatar"
                                     class="customer-img rounded-circle">
                                 <div class="media-body ml-3">
                                     <h6 class="mb-0">Air Pod <small class="ml-4">05.26 PM</small></h6>
@@ -202,7 +202,7 @@
                         </li>
                         <li class="list-group-item bg-transparent">
                             <div class="media align-items-center">
-                                <img src="assets/images/avatars/avatar-14.png" alt="user avatar"
+                                <img src="backend/assets/images/avatars/avatar-14.png" alt="user avatar"
                                     class="customer-img rounded-circle">
                                 <div class="media-body ml-3">
                                     <h6 class="mb-0">Mackbook Pro <small class="ml-4">06.45 AM</small></h6>
@@ -219,7 +219,7 @@
                         </li>
                         <li class="list-group-item bg-transparent">
                             <div class="media align-items-center">
-                                <img src="assets/images/avatars/avatar-16.png" alt="user avatar"
+                                <img src="backend/assets/images/avatars/avatar-16.png" alt="user avatar"
                                     class="customer-img rounded-circle">
                                 <div class="media-body ml-3">
                                     <h6 class="mb-0">Air Pod <small class="ml-4">08.34 AM</small></h6>
@@ -236,7 +236,7 @@
                         </li>
                         <li class="list-group-item bg-transparent">
                             <div class="media align-items-center">
-                                <img src="assets/images/avatars/avatar-17.png" alt="user avatar"
+                                <img src="backend/assets/images/avatars/avatar-17.png" alt="user avatar"
                                     class="customer-img rounded-circle">
                                 <div class="media-body ml-3">
                                     <h6 class="mb-0">Mackbook <small class="ml-4">08.34 AM</small></h6>
