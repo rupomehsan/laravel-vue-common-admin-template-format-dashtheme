@@ -12,7 +12,7 @@ class All
             // dd(request()->all());
             $offset = request()->input('offset') ?? 10;
             $condition = [];
-            $with = [];
+            $with = ['child_cateogories'];
             $data = self::$model::query();
             if (request()->has('status') && request()->input('status')) {
                 $condition['status'] = request()->input('status');
@@ -23,7 +23,7 @@ class All
             }
 
             if (request()->has('get_all') && (int)request()->input('get_all') === 1) {
-                $data = $data->with($with)->where($condition)->latest()->get();
+                $data = $data->with($with)->where('parent_id',0)->where($condition)->latest()->get();
             } else {
                 $data = $data->with($with)->where($condition)->latest()->paginate($offset);
             }

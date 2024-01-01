@@ -79,7 +79,10 @@ body {
 }
 
 select option {
-    background: #000;
+    background: #18181859;
+    border: 1px solid #f58686;
+    padding: 2px 4px;
+    margin: 2px 0px;
 }
 
 ::placeholder {

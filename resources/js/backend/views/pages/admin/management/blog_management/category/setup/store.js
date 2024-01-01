@@ -4,8 +4,11 @@ export const blog_category_setup_store = defineStore('blog_category_setup_store'
     state: () => ({
         all_data: {},
         single_data: {},
+        all_child_data: {}
     }),
     getters: {
+
+        
         doubleCount: (state) => state.count * 2,
     },
     actions: {
@@ -19,14 +22,19 @@ export const blog_category_setup_store = defineStore('blog_category_setup_store'
             }
             this.all_data = response.data.data;
         },
-        get: async function(id){
-            let response = await axios.get('blog-categories/'+id);
+        get_all_data_with_child: async function () {
+            let response = await axios.get('blog-categories?get_all=1');
+            response = response.data.data;
+            this.all_child_data = response;
+        },
+        get: async function (id) {
+            let response = await axios.get('blog-categories/' + id);
             response = response.data.data;
             this.single_data = response;
         },
-        store: async function(form){
+        store: async function (form) {
             let formData = new FormData(form);
-            let response = await axios.post('blog-categories',formData)
+            let response = await axios.post('blog-categories', formData)
             return response
         },
         update: async function (form, id) {
@@ -34,7 +42,7 @@ export const blog_category_setup_store = defineStore('blog_category_setup_store'
             let response = await axios.post(`blog-categories/${id}?_method=PATCH`, formData);
             return response
         },
-        delete: async function(id){
+        delete: async function (id) {
             var data = await window.s_confirm();
             if (data) {
                 let response = await axios.delete("blog-categories/" + id);
@@ -42,8 +50,8 @@ export const blog_category_setup_store = defineStore('blog_category_setup_store'
                 this.all();
             }
         },
-        bulk_action: async function(action,data){
-            let response = await axios.post('blog-category/bulk-action',{action,data})
+        bulk_action: async function (action, data) {
+            let response = await axios.post('blog-category/bulk-action', { action, data })
             if (response.data.status === "success") {
                 window.s_alert(response.data.message);
                 this.all();

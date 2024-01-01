@@ -9,6 +9,7 @@ class Model extends EloquentModel
 {
     protected $table = "blog_categories";
     protected $guarded = [];
+    static $categoryModel = \App\Modules\BlogManagement\BlogCategory\Model::class;
 
     protected static function booted()
     {
@@ -23,5 +24,10 @@ class Model extends EloquentModel
     public function scopeActive($q)
     {
         return $q->where('status', 'active');
+    }
+
+    public function child_cateogories()
+    {
+        return $this->hasMany(self::$categoryModel, 'parent_id')->with('child_cateogories');
     }
 }

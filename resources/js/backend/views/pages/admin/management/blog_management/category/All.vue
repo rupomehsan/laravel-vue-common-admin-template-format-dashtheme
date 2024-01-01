@@ -6,7 +6,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h5> {{ page_title }}</h5>
-                        <div v-if="show_bulk_action" class="btn-group m-1 "
+                        <div v-if="cchild_item.length" class="btn-group m-1 "
                             onclick="document.getElementById('table-actions').classList.toggle('show')">
                             <button type="button" class="btn btn-light waves-effect waves-light">Actions</button>
                             <button type="button"
@@ -23,8 +23,8 @@
                             </div>
                         </div>
                         <div>
-                            <router-link class="btn btn-outline-warning btn-sm" :to="{ name: `Create${route_prefix}` }"> {{
-}} Create</router-link>
+                            <router-link class="btn btn-outline-warning btn-sm" :to="{ name: `Create${route_prefix}` }">
+                                Create</router-link>
                         </div>
                     </div>
                     <div class="card-body table-responsive h-80vh">
@@ -36,14 +36,15 @@
                                     <th class="text-start">SL</th>
                                     <th> Name</th>
                                     <th> Status</th>
-
                                     <th class="text-end">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr v-for="(item, index) in all_data.data" :key="item.id">
-                                    <td class="w-10"><input v-model="child_item[index]" @click="toggleChildCheckbox(index)"
-                                            type="checkbox"></td>
+                                    <td class="w-10">
+                                        <input @click="toggleChildCheckbox(item.id)"
+                                            :checked="cchild_item.includes(item.id)" type="checkbox">
+                                    </td>
                                     <td class="text-start">{{ index + 1 }}</td>
 
                                     <td>{{ item.title }}</td>
@@ -80,6 +81,7 @@
             </div>
         </div>
         <!-- Container-fluid starts -->
+        {{ cchild_item }}
     </div>
 </template>
 
@@ -91,7 +93,7 @@ export default {
     data: () => ({
         route_prefix: '',
         page_title: '',
-        child_item: [],
+        cchild_item: [],
         parent_item: false,
         show_bulk_action: false
     }),
@@ -110,25 +112,21 @@ export default {
         }),
         toggleParentCheckbox() {
             this.parent_item = !this.parent_item;
-            this.child_item = this.parent_item ? this.all_data.data.map(item => item.id) : [];
-            this.show_bulk_action = this.child_item.length > 0;
+            this.cchild_item = this.parent_item ? this.all_data.data.map(item => item.id) : [];
+            console.log("dd", this.cchild_item);
         },
         toggleChildCheckbox(index) {
-            if (!this.all_data || !this.all_data.data || !Array.isArray(this.all_data.data)) {
-                console.error("Invalid data structure");
-                return;
-            }
-
-            const itemId = this.all_data.data[index].id;
-
-            if (this.child_item.includes(itemId)) {
-                this.child_item = this.child_item.filter(item => item !== itemId);
+            let ischecked = event.target.checked
+            if (ischecked) {
+                this.cchild_item.push(index);
             } else {
-                this.child_item.push(itemId);
+                this.cchild_item = this.cchild_item.filter(item => item != index);
             }
+
+            console.log(this.cchild_item, index);
         },
         bulkActions(action) {
-            this.bulk_action(action, this.child_item)
+            this.bulk_action(action, this.cchild_item)
         }
 
     },
