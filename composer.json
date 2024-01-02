@@ -34,7 +34,8 @@
         },
         "files": [
             "app/Helpers/Helpers.php",
-            "app/Helpers/Module.php"
+            "app/Helpers/Module.php",
+            "app/Helpers/ViewModule.php"
         ]
     },
     "autoload-dev": {

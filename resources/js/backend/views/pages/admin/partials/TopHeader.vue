@@ -37,7 +37,7 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="assets/images/avatars/avatar-5.png" alt="user avatar"></div>
+                                                src="backend/assets/images/avatars/avatar-5.png" alt="user avatar"></div>
                                         <div class="media-body">
                                             <h6 class="mt-0 msg-title">Jhon Deo</h6>
                                             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -50,7 +50,7 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="assets/images/avatars/avatar-6.png" alt="user avatar"></div>
+                                                src="backend/assets/images/avatars/avatar-6.png" alt="user avatar"></div>
                                         <div class="media-body">
                                             <h6 class="mt-0 msg-title">Sara Jen</h6>
                                             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -63,7 +63,7 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="assets/images/avatars/avatar-7.png" alt="user avatar"></div>
+                                                src="backend/assets/images/avatars/avatar-7.png" alt="user avatar"></div>
                                         <div class="media-body">
                                             <h6 class="mt-0 msg-title">Dannish Josh</h6>
                                             <p class="msg-info">Lorem ipsum dolor sit amet...</p>
@@ -76,7 +76,7 @@
                                 <a href="javaScript:void();">
                                     <div class="media">
                                         <div class="avatar"><img class="align-self-start mr-3"
-                                                src="assets/images/avatars/avatar-8.png" alt="user avatar"></div>
+                                                src="backend/assets/images/avatars/avatar-8.png" alt="user avatar"></div>
                                         <div class="media-body">
                                             <h6 class="mt-0 msg-title">Katrina Mccoy</h6>
                                             <p class="msg-info">Lorem ipsum dolor sit amet.</p>

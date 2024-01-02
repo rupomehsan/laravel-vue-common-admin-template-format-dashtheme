@@ -19,30 +19,37 @@
                                     <th class="text-start">SL</th>
                                     <th>Full Name</th>
                                     <th>Email</th>
-                                    <th>Subject</th>
-                                    <th>Message</th>
+                                    <th>Phone</th>
+                                    <th>image</th>
+                                    <th>status</th>
                                     <th class="text-end">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr v-for="i in 10" :key="i">
+                                <tr v-for="(item, index) in all_data.data" :key="item.id">
                                     <td class="w-10"><input type="checkbox"></td>
-                                    <td class="text-start">{{ i }}</td>
-                                    <td>asd</td>
-                                    <td>asdf</td>
-                                    <td>asdf</td>
-                                    <td>asdf</td>
+                                    <td class="text-start">{{ index + 1 }}</td>
+                                    <td>{{ item.name }}</td>
+                                    <td>{{ item.email }}</td>
+                                    <td>{{ item.phone }}</td>
+                                    <td>
+                                        <img :src="item.image" height="50" width="70" alt="">
+                                    </td>
+                                    <td>{{ item.status }}</td>
                                     <td style="width: 100px;">
                                         <div class="d-flex justify-content-between gap-2">
-                                            <router-link class="btn btn-sm btn-outline-success "
-                                                :to="{ name: `CreateUser` }">
+                                            <!-- <router-link class="btn btn-sm btn-outline-success "
+                                                :to="{ name: `CreateBlogCategory` }">
                                                 <i class="fa fa-eye"></i>
-                                            </router-link>
-                                            <router-link class="btn btn-sm btn-outline-warning mx-2"
-                                                :to="{ name: `CreateUser` }">
+                                            </router-link> -->
+                                            <router-link class="btn btn-sm btn-outline-warning mx-2" :to="{
+                                                name: `Create${route_prefix}`, query: {
+                                                    id: item.id,
+                                                },
+                                            }">
                                                 <i class="fa fa-pencil"></i>
                                             </router-link>
-                                            <a @click.prevent="contact_delete(12)" class="btn btn-sm btn-outline-danger ">
+                                            <a @click.prevent="delete_data(item.id)" class="btn btn-sm btn-outline-danger ">
                                                 <i class="fa fa-trash"></i>
                                             </a>
                                         </div>
@@ -54,13 +61,7 @@
 
                     </div>
                     <div class="mx-5">
-                        <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="javascript:void();">Previous</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void();">1</a></li>
-                            <li class="page-item active"><a class="page-link" href="javascript:void();">2</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void();">3</a></li>
-                            <li class="page-item"><a class="page-link" href="javascript:void();">Next</a></li>
-                        </ul>
+                        <pagination :data="all_data" :method="get_all_data" />
                     </div>
                 </div>
             </div>
@@ -81,17 +82,18 @@ export default {
     created: function () {
         this.route_prefix = setup.route_prefix;
         this.page_title = setup.page_title;
+        this.get_all_data()
     },
     methods: {
         ...mapActions(user_setup_store, {
             get_all_data: 'all',
-            get_single_data: 'get',
-            store_data: 'store',
-            update_data: 'update',
             delete_data: 'delete',
         }),
-        ...mapState(user_setup_store,{
 
+    },
+    computed: {
+        ...mapState(user_setup_store, {
+            all_data: 'all_data',
         })
     }
 }

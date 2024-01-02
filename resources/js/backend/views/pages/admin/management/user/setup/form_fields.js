@@ -1,6 +1,6 @@
 export default [
     {
-        name: "full_name",
+        name: "name",
         label: "Enter your full name",
         type: "text",
         value: "",
@@ -28,10 +28,10 @@ export default [
         name: "image",
         label: "Upload your image",
         type: "file",
-        value: "",
+        value: null,
         multiple: false,
     },
-   
+
 
     {
         name: "status",

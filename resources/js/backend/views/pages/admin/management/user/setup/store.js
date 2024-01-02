@@ -10,9 +10,9 @@ export const user_setup_store = defineStore("user_setup_store", {
         doubleCount: (state) => state.count * 2,
     },
     actions: {
+
         all: async function (url) {
             let response;
-            // let page = `?page=${pageLimit}`;
             if (url) {
                 response = await axios.get(url);
             } else {
@@ -20,10 +20,10 @@ export const user_setup_store = defineStore("user_setup_store", {
             }
             this.all_data = response.data.data;
         },
+
         get: async function (id) {
             let response = await axios.get("users/" + id);
             response = response.data.data;
-            // console.log("data", response);
             this.single_data = response;
         },
 
@@ -32,12 +32,13 @@ export const user_setup_store = defineStore("user_setup_store", {
             let response = await axios.post("users", formData);
             return response;
         },
+
         update: async function (form, id) {
             let formData = new FormData(form);
             let response = await axios.post(`users/${id}?_method=PATCH`, formData);
-            window.s_alert("Data successcully updated");
-            console.log("res", response.data);
+            return response;
         },
+
         delete: async function (id) {
             var data = await window.s_confirm();
             if (data) {
@@ -56,5 +57,6 @@ export const user_setup_store = defineStore("user_setup_store", {
             // console.log("data", response);
             this.role_data = response;
         },
+        
     },
 });

@@ -31,7 +31,7 @@
                 <label for="" class="mb-2">Select Category Parent</label>
                 <br>
                 <input type="radio" name="parent_id" checked="checked" value="0">
-                <!-- <label for="">No parent</label> -->
+                <span class="text-sm mx-2"  for="">No parent</span>
 
 
                 <nestedCategory :children="all_child_data" :child_parent_id="child_parent_id"></nestedCategory>

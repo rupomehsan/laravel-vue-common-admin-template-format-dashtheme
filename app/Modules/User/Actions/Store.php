@@ -12,8 +12,15 @@ class Store
     public static function execute(Validation $request)
     {
         try {
-            if (self::$model::query()->create($request->validated())) {
-                return messageResponse('Item added successfully', 201);
+            $data = $request->validated();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $imageName = uploader($image, 'uploads/user');
+                $data['image'] = $imageName;
+            }
+            $data['password'] = Hash::make($request->input('password'));
+            if (self::$model::query()->create($data)) {
+                return messageResponse('User added successfully', 201);
             }
         } catch (\Exception $e) {
             return messageResponse($e->getMessage(), 500, 'server_error');

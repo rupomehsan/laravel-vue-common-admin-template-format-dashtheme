@@ -24,4 +24,6 @@ class Model extends EloquentModel
     {
         return $q->where('status', 'active');
     }
+
+    
 }
