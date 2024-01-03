@@ -8,6 +8,7 @@ use App\Modules\User\Actions\Show;
 use App\Modules\User\Actions\Store;
 use App\Modules\User\Actions\Update;
 use App\Modules\User\Actions\Validation;
+use App\Modules\User\Actions\BulkActions;
 use \App\Modules\User\Model as User;
 use App\Http\Controllers\Controller as ControllersController;
 
@@ -42,6 +43,11 @@ class Controller extends ControllersController
     public function destroy($id)
     {
         $data = Delete::execute($id);
+        return $data;
+    }
+    public function BulkActions()
+    {
+        $data = BulkActions::execute();
         return $data;
     }
 }

@@ -50,7 +50,7 @@ if (!function_exists('viewAll')) {
                                                     <th class="text-end">Action</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody v-if="all_data.data.length">
                                                 <tr v-for="(item, index) in all_data.data" :key="item.id">
                                                     <td class="w-10">
                                                        <input @click="toggleChildCheckbox(item.id)"
@@ -79,6 +79,13 @@ if (!function_exists('viewAll')) {
                                                     </td>
                                                 </tr>
                                             </tbody>
+                                            <tbody v-else>
+                                            <tr>
+                                                <td colspan="8" class="alert alert-success">
+                                                    No Data found
+                                                </td>
+                                            </tr>
+                                        </tbody>
                                         </table>
                                         <hr>
 

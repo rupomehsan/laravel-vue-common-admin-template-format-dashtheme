@@ -6,6 +6,22 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between">
                         <h5 class="text-capitalize"> {{ page_title }}</h5>
+                        <div v-if="child_items.length" class="btn-group m-1 "
+                            onclick="document.getElementById('table-actions').classList.toggle('show')">
+                            <button type="button" class="btn btn-light waves-effect waves-light">Actions</button>
+                            <button type="button"
+                                class="btn btn-light split-btn-light dropdown-toggle dropdown-toggle-split waves-effect waves-light"
+                                data-toggle="dropdown" aria-expanded="false">
+                                <span class="caret"></span>
+                            </button>
+                            <div class="dropdown-menu" style="" id="table-actions">
+                                <a href="javaScript:void();" class="dropdown-item" @click="bulkActions('delete')">Delete</a>
+                                <a href="javaScript:void();" class="dropdown-item" @click="bulkActions('active')">Active</a>
+                                <a href="javaScript:void();" class="dropdown-item"
+                                    @click="bulkActions('inactive')">Inactive</a>
+
+                            </div>
+                        </div>
                         <div>
                             <router-link class="btn btn-outline-warning btn-sm"
                                 :to="{ name: `Create${route_prefix}` }">Create</router-link>
@@ -15,7 +31,8 @@
                         <table class="table table-hover text-center table-bordered">
                             <thead>
                                 <tr>
-                                    <th class="w-10"><input type="checkbox"></th>
+                                    <th class="w-10"><input type="checkbox" v-model="parent_item"
+                                            @click="toggleParentCheckbox"></th>
                                     <th class="text-start">SL</th>
                                     <th>Full Name</th>
                                     <th>Email</th>
@@ -25,9 +42,10 @@
                                     <th class="text-end">Action</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody v-if="all_data.data.length">
                                 <tr v-for="(item, index) in all_data.data" :key="item.id">
-                                    <td class="w-10"><input type="checkbox"></td>
+                                    <td class="w-10"><input type="checkbox" :checked="child_items.includes(item.id)"
+                                            @click="toggleChildCheckbox(item.id)"></td>
                                     <td class="text-start">{{ index + 1 }}</td>
                                     <td>{{ item.name }}</td>
                                     <td>{{ item.email }}</td>
@@ -56,6 +74,13 @@
                                     </td>
                                 </tr>
                             </tbody>
+                            <tbody v-else>
+                                <tr>
+                                    <td colspan="8" class="alert alert-success">
+                                        No Data found
+                                    </td>
+                                </tr>
+                            </tbody>
                         </table>
                         <hr>
 
@@ -78,7 +103,8 @@ export default {
     data: () => ({
         route_prefix: '',
         page_title: '',
-        route:'user'
+        parent_item: false,
+        child_items: []
     }),
     created: function () {
         this.route_prefix = setup.route_prefix;
@@ -89,7 +115,26 @@ export default {
         ...mapActions(user_setup_store, {
             get_all_data: 'all',
             delete_data: 'delete',
+            bulk_actions: 'bulk_actions',
         }),
+
+        toggleParentCheckbox() {
+            this.child_items = event.target.checked ? this.all_data.data.map(item => item.id) : []
+        },
+
+        toggleChildCheckbox(id) {
+            let isChecked = event.target.checked
+            if (isChecked) {
+                this.child_items.push(id)
+            } else {
+                this.child_items = this.child_items.filter(item => item != id)
+            }
+        },
+        bulkActions(action) {
+            this.bulk_actions(action, this.child_items)
+            this.parent_item = false
+            this.child_items = []
+        }
 
     },
     computed: {
