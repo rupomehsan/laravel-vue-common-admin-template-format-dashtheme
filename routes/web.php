@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Str;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,3 +22,8 @@ Route::get('/', function () {
 Route::get('/admin', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
 
 Auth::routes();
+
+Route::get('test', function () {
+    $store = Str::singular((Str::snake('NewsParer')));
+    return $store;
+});

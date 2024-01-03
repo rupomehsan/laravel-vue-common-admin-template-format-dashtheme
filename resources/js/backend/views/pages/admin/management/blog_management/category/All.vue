@@ -95,7 +95,7 @@ export default {
         page_title: '',
         cchild_item: [],
         parent_item: false,
-        show_bulk_action: false
+
     }),
     created: async function () {
         this.route_prefix = setup.route_prefix;
@@ -115,15 +115,13 @@ export default {
             this.cchild_item = this.parent_item ? this.all_data.data.map(item => item.id) : [];
             console.log("dd", this.cchild_item);
         },
-        toggleChildCheckbox(index) {
+        toggleChildCheckbox(id) {
             let ischecked = event.target.checked
             if (ischecked) {
-                this.cchild_item.push(index);
+                this.cchild_item.push(id);
             } else {
-                this.cchild_item = this.cchild_item.filter(item => item != index);
+                this.cchild_item = this.cchild_item.filter(item => item != id);
             }
-
-            console.log(this.cchild_item, index);
         },
         bulkActions(action) {
             this.bulk_action(action, this.cchild_item)

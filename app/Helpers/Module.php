@@ -59,6 +59,73 @@ if (!function_exists('all')) {
 }
 
 
+if (!function_exists('bulkActions')) {
+    function bulkActions($moduleName)
+    {
+
+        $formated_module = explode('/', $moduleName);
+
+        if (count($formated_module) > 1) {
+            array_pop($formated_module);
+            $moduleName = implode('/', $formated_module);
+            $moduleName = Str::replace("/", "\\", $moduleName);
+        } else {
+            $moduleName = Str::replace("/", "\\", $moduleName);
+        }
+
+        $content = <<<"EOD"
+        <?php
+
+        namespace App\\Modules\\{$moduleName}\\Actions;
+
+        class BulkActions
+        {
+            static \$model = \App\Modules\\{$moduleName}\\Model::class;
+
+            public static function execute()
+            {
+                try {
+                    if (request()->input('action') == 'active' || request()->input('action') == 'inactive') {
+                        if (request()->input('data') && count(request()->input('data'))) {
+
+                            \$data = request()->input('data');
+                            foreach (\$data as \$item) {
+                                \$getItem = self::\$model::find(\$item);
+
+                                if (\$getItem) {
+                                    \$getItem->status = request()->input('action');
+                                    \$getItem->update();
+                                }
+                            }
+                        }
+                    }
+
+                    if (request()->input('action') == 'delete') {
+                        if (request()->input('data') && count(request()->input('data'))) {
+                            \$data = request()->input('data');
+                            foreach (\$data as \$item) {
+                                \$getItem = self::\$model::find(\$item);
+                                if (\$getItem) {
+                                    \$getItem->delete();
+                                }
+                            }
+                        }
+                    }
+
+                    return messageResponse("Items are Successfully " . request()->input('action'), 200, 'success');
+                } catch (\Exception \$e) {
+                    return messageResponse(\$e->getMessage(), 500, 'server_error');
+                }
+            }
+        }
+
+        EOD;
+
+        return $content;
+    }
+}
+
+
 
 
 if (!function_exists('store')) {
@@ -164,7 +231,7 @@ if (!function_exists('show')) {
 
             namespace App\\Modules\\{$moduleName}\\Actions;
 
-        
+
 
             class Show
             {
@@ -541,6 +608,7 @@ if (!function_exists('controller')) {
         use App\\Modules\\{$moduleName}\\Actions\Store;
         use App\\Modules\\{$moduleName}\\Actions\Update;
         use App\\Modules\\{$moduleName}\\Actions\Validation;
+        use App\\Modules\\{$moduleName}\\Actions\BulkActions;
         use App\Http\Controllers\Controller as ControllersController;
 
 
@@ -576,6 +644,12 @@ if (!function_exists('controller')) {
                 \$data = Delete::execute(\$id);
                 return \$data;
             }
+            public function bulkAction()
+            {
+                \$data = BulkActions::execute();
+                return \$data;
+            }
+
         }
         EOD;
         return $content;
@@ -606,6 +680,7 @@ if (!function_exists('routeContent')) {
 
             Route::prefix('v1')->group(function () {
                 Route::apiResource('{$route_name}', Controller::class);
+                Route::post('{$route_name}/bulk-action', [Controller::class, 'bulkAction']);
             });
             EOD;
         // $content = str_replace('{moduleName}', $moduleName, $content);

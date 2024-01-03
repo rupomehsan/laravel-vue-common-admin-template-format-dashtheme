@@ -48,10 +48,9 @@ class ModelingDirectory extends Command
             File::makeDirectory($actionsDirectory);
         }
 
-        $actionFiles = ['All.php',  'Store.php', 'Show.php', 'Update.php', 'Delete.php',  'Validation.php', 'Seeder.php'];
+        $actionFiles = ['All.php', 'BulkActions.php', 'Store.php', 'Show.php', 'Update.php', 'Delete.php',  'Validation.php', 'Seeder.php'];
 
         if ($module_dir != null) {
-
             $module_name = $module_dir . '/' . $moduleName;
         } else {
             $module_name = $moduleName;
@@ -61,6 +60,9 @@ class ModelingDirectory extends Command
         foreach ($actionFiles as $file) {
             if ($file == 'All.php') {
                 File::put($actionsDirectory . '/' . $file, all($module_name));
+            }
+            if ($file == 'BulkActions.php') {
+                File::put($actionsDirectory . '/' . $file, bulkActions($module_name));
             }
             if ($file == 'Store.php') {
                 File::put($actionsDirectory . '/' . $file, store($module_name));
@@ -122,11 +124,10 @@ class ModelingDirectory extends Command
 
             // dd($module_name);
 
-
             File::put($vueDirectory  . $ViewModuleName . '/All.vue', viewAll($ViewModuleName));
             File::put($vueDirectory  . $ViewModuleName . '/Form.vue', viewForm($ViewModuleName));
 
-            $setupActionFiles = ['form_fields.js',  'index.js', 'Layout.vue', 'route.js', 'store.js'];
+            $setupActionFiles = ['form_fields.js',  'index.js', 'Layout.vue', 'routes.js', 'store.js'];
             foreach ($setupActionFiles as $file) {
                 if ($file == 'form_fields.js') {
                     File::put($ViewactionsDirectory . '/' . $file, ViewFormField($ViewModuleName));
@@ -137,7 +138,7 @@ class ModelingDirectory extends Command
                 if ($file == 'Layout.vue') {
                     File::put($ViewactionsDirectory . '/' . $file, ViewLayout($ViewModuleName));
                 }
-                if ($file == 'route.j') {
+                if ($file == 'routes.js') {
                     File::put($ViewactionsDirectory . '/' . $file, ViewRoute($ViewModuleName));
                 }
                 if ($file == 'store.js') {

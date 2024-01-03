@@ -20,7 +20,6 @@ const routes =
             name: "Create" + route_prefix,
             component: Form,
         },
-
     ]
 };
 

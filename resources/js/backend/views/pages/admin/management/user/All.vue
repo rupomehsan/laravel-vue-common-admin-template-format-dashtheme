@@ -77,7 +77,8 @@ import setup from "./setup";
 export default {
     data: () => ({
         route_prefix: '',
-        page_title: ''
+        page_title: '',
+        route:'user'
     }),
     created: function () {
         this.route_prefix = setup.route_prefix;
