@@ -19,7 +19,7 @@
             <li class="menu-label">Blog Management</li>
             <side-bar-drop-down-menus :icon="`fa fa-plus`" :menu_title="`Blog Manage`" :menus="[
                 {
-                    route_name: `AllBlogCategory`,
+                    route_name: `AllCategory`,
                     title: `Blog Category`,
                 },
                 {
@@ -36,14 +36,14 @@
                     <div class="menu-title">All Users</div>
                 </router-link>
             </li>
-            <!-- <li>
+            <li>
                 <router-link :to="{ name: `AllNewsPaper` }" href="javascript:void();" aria-expanded="false">
                     <div class="parent-icon">
                         <i class="fa fa-users"></i>
                     </div>
                     <div class="menu-title">All Newspaer</div>
                 </router-link>
-            </li> -->
+            </li>
 
         </ul>
     </div>

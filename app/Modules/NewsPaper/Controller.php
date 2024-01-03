@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Modules\BlogManagement\Blog;
+namespace App\Modules\NewsPaper;
 
-use App\Modules\BlogManagement\Blog\Actions\All;
-use App\Modules\BlogManagement\Blog\Actions\Delete;
-use App\Modules\BlogManagement\Blog\Actions\Show;
-use App\Modules\BlogManagement\Blog\Actions\Store;
-use App\Modules\BlogManagement\Blog\Actions\Update;
-use App\Modules\BlogManagement\Blog\Actions\Validation;
-use App\Modules\BlogManagement\Blog\Actions\BulkActions;
+use App\Modules\NewsPaper\Actions\All;
+use App\Modules\NewsPaper\Actions\Delete;
+use App\Modules\NewsPaper\Actions\Show;
+use App\Modules\NewsPaper\Actions\Store;
+use App\Modules\NewsPaper\Actions\Update;
+use App\Modules\NewsPaper\Actions\Validation;
+use App\Modules\NewsPaper\Actions\BulkActions;
 use App\Http\Controllers\Controller as ControllersController;
 
 

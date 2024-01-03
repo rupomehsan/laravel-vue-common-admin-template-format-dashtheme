@@ -8,8 +8,9 @@ if (!function_exists('all')) {
 
         $formated_module = explode('/', $moduleName);
 
+        // dd($formated_module);
+
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -66,7 +67,7 @@ if (!function_exists('bulkActions')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -134,7 +135,7 @@ if (!function_exists('store')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -176,7 +177,7 @@ if (!function_exists('update')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -219,7 +220,7 @@ if (!function_exists('show')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -262,7 +263,7 @@ if (!function_exists('delete')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -302,7 +303,7 @@ if (!function_exists('validation')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -456,7 +457,7 @@ if (!function_exists('model')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -551,7 +552,7 @@ if (!function_exists('seeder')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -590,7 +591,7 @@ if (!function_exists('controller')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {
@@ -662,7 +663,7 @@ if (!function_exists('routeContent')) {
         $formated_module = explode('/', $moduleName);
 
         if (count($formated_module) > 1) {
-            array_pop($formated_module);
+
             $moduleName = implode('/', $formated_module);
             $moduleName = Str::replace("/", "\\", $moduleName);
         } else {

@@ -1,10 +1,10 @@
 import Layout from "./Layout.vue"
 import Dashboard from "../Dashboard.vue"
 
-import blog_category_routes from "../management/blog_management/category/setup/routes";
-import blog_routes from "../management/blog_management/blog/setup/routes";
+import blog_category_routes from "../management/BlogManagement/Category/setup/routes";
+import blog_routes from "../management/BlogManagement/Blog/setup/routes";
 import user_routes from "../management/user/setup/routes";
-// import newspaper_routes from "../management/NewsPaper/setup/routes";
+import newspaper_routes from "../management/NewsPaper/setup/routes";
 
 
 const routes = {
@@ -20,7 +20,7 @@ const routes = {
         blog_category_routes,
         blog_routes,
         user_routes,
-        // newspaper_routes,
+        newspaper_routes,
 
     ]
 };
